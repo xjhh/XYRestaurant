@@ -1,9 +1,12 @@
 package com.example.xy_restaurant.controller;
 
 
+import ch.qos.logback.core.status.WarnStatus;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.xy_restaurant.entity.Manager;
 import com.example.xy_restaurant.entity.Power;
+import com.example.xy_restaurant.entity.QueryParam;
 import com.example.xy_restaurant.util.ResultJson;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +28,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/sys/user")
-public class ManagerController extends BaseController{
+public class ManagerController extends BaseController {
 
     @Override
     @RequestMapping("/user")
@@ -47,18 +51,24 @@ public class ManagerController extends BaseController{
         return "user/edit";
     }
 
-    @Override
-    public List queryList() {
-        return managerService.selectList(null);
+    @ResponseBody
+    @GetMapping("/list")
+    public List queryList(@ModelAttribute QueryParam queryParam) {
+        System.out.println(queryParam.toString());
+        if (queryParam.getManagerPower() == -1) {
+            return managerService.selectList(null);
+        } else {
+          return managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getManagerPower()));
+        }
     }
 
     @ResponseBody
     @RequestMapping("/insert")
     public String insert(@ModelAttribute Manager manager) {
-        if(!managerService.insert(manager)){
+        if (!managerService.insert(manager)) {
             System.out.println("失败");
             return ResultJson.resultMsg(false, "添加失败");
-        }else{
+        } else {
             System.out.println("成功 ");
             return ResultJson.resultMsg(true, "");
         }
@@ -68,41 +78,41 @@ public class ManagerController extends BaseController{
     @RequestMapping("/update")
     public String update(@ModelAttribute Manager manager, HttpSession session) {
         System.out.println(manager.toString());
-        if(!managerService.updateById(manager)){
+        if (!managerService.updateById(manager)) {
             return ResultJson.resultMsg(false, "修改失败");
-        }else{
+        } else {
             return ResultJson.resultMsg(true, "");
         }
     }
 
     @Override
     public String delete(int id, HttpSession session) {
-        if(!managerService.deleteById(id)){
+        if (!managerService.deleteById(id)) {
             return ResultJson.resultMsg(false, "删除失败");
-        }else{
+        } else {
             return ResultJson.resultMsg(true, "");
         }
     }
 
     @ResponseBody
     @PostMapping("/batchRemove")
-    public String deleteBatchIds(@RequestParam("ids") int[] ids){
+    public String deleteBatchIds(@RequestParam("ids") int[] ids) {
         String str = "";
         List<Integer> idList = new ArrayList<>();
         for (int id : ids) {
             idList.add(id);
-            str += "  "+id;
+            str += "  " + id;
         }
-        System.out.println("======>批量删除权限"+str);
-        if(!managerService.deleteBatchIds(idList)){
+        System.out.println("======>批量删除权限" + str);
+        if (!managerService.deleteBatchIds(idList)) {
             return ResultJson.resultMsg(false, "删除失败");
-        }else{
+        } else {
             return ResultJson.resultMsg(true, "");
         }
     }
 
     @RequestMapping("/resetPwd/{id}")
-    public String enterResetPwd(@PathVariable("id") int id ,HttpServletRequest request){
+    public String enterResetPwd(@PathVariable("id") int id, HttpServletRequest request) {
         Manager manager = managerService.selectById(id);
         request.setAttribute("manager", manager);
         return "user/resetPwd";
@@ -110,15 +120,14 @@ public class ManagerController extends BaseController{
 
     @ResponseBody
     @RequestMapping("/adminResetPwd")
-    public String adminResetPwd(@ModelAttribute Manager manager){
+    public String adminResetPwd(@ModelAttribute Manager manager) {
 
-        if(!managerService.updateById(manager)){
+        if (!managerService.updateById(manager)) {
             return ResultJson.resultMsg(false, "修改失败");
-        }else{
+        } else {
             return ResultJson.resultMsg(true, "");
         }
     }
-
 
 
 //    @RequestMapping("/edit/{id}")

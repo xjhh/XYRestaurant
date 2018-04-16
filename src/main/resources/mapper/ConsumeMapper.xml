@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.ConsumeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Consume">
+        <id column="consume_id" property="consumeId" />
+        <result column="member_card" property="memberCard" />
+        <result column="desk_id" property="deskId" />
+        <result column="good_id" property="goodId" />
+        <result column="consume_time" property="consumeTime" />
+        <result column="consume_total" property="consumeTotal" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        consume_id AS consumeId, member_card AS memberCard, desk_id AS deskId, good_id AS goodId, consume_time AS consumeTime, consume_total AS consumeTotal
+    </sql>
+
+</mapper>

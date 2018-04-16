@@ -1,0 +1,35 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+
+body {
+	font-weight: 500;
+	font-size: 1.05em;
+	font-family: "Microsoft YaHei", "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#mainLeft {
+	position: absolute;
+	height: 100%;
+}
+
+.nav-header{
+	height: 200px;
+	text-align: center;
+}
+.title {
+	color: #ffffff;
+	text-align: center;
+	
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+}
+
+
+#bgCanvas {
+	position: absolute;
+	z-index:-1;
+}

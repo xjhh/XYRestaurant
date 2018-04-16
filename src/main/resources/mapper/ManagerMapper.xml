@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.ManagerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Manager">
+        <id column="manager_id" property="managerId" />
+        <result column="manager_username" property="managerUsername" />
+        <result column="manager_password" property="managerPassword" />
+        <result column="manager_power" property="managerPower" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        manager_id AS managerId, manager_username AS managerUsername, manager_password AS managerPassword, manager_power AS managerPower
+    </sql>
+    <select id="selectUserByName" resultMap="BaseResultMap" parameterType="string">
+        select * from  manager where manager_username = #{name}
+    </select>
+    <select id="selectUserByAll" resultType="java.lang.Integer" >
+        select  manager_id  from  manager where manager_username = #{managerUsername} and manager_password = #{managerPassword} and manager_power = #{managerPower}
+    </select>
+
+</mapper>

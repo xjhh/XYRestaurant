@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.DeskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Desk">
+        <id column="desk_id" property="deskId" />
+        <result column="desk_type" property="deskType" />
+        <result column="desk_number" property="deskNumber" />
+        <result column="desk_state" property="deskState" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        desk_id AS deskId, desk_type AS deskType, desk_number AS deskNumber, desk_state AS deskState
+    </sql>
+
+</mapper>

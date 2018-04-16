@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.PurchaseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Purchase">
+        <id column="purchase_id" property="purchaseId" />
+        <result column="purchase_name" property="purchaseName" />
+        <result column="purchase_price" property="purchasePrice" />
+        <result column="purchase_number" property="purchaseNumber" />
+        <result column="purchase_time" property="purchaseTime" />
+        <result column="purchase_total" property="purchaseTotal" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        purchase_id AS purchaseId, purchase_name AS purchaseName, purchase_price AS purchasePrice, purchase_number AS purchaseNumber, purchase_time AS purchaseTime, purchase_total AS purchaseTotal
+    </sql>
+
+</mapper>

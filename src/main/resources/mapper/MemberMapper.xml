@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.MemberMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Member">
+        <id column="member_id" property="memberId" />
+        <result column="member_card" property="memberCard" />
+        <result column="member_name" property="memberName" />
+        <result column="member_password" property="memberPassword" />
+        <result column="member_phone" property="memberPhone" />
+        <result column="member_ingral" property="memberIngral" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        member_id AS memberId, member_card AS memberCard, member_name AS memberName, member_password AS memberPassword, member_phone AS memberPhone, member_ingral AS memberIngral
+    </sql>
+
+</mapper>

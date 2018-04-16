@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Goods">
+        <id column="good_id" property="goodId" />
+        <result column="good_number" property="goodNumber" />
+        <result column="good_name" property="goodName" />
+        <result column="good_type" property="goodType" />
+        <result column="good_price" property="goodPrice" />
+        <result column="good_stock" property="goodStock" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        good_id AS goodId, good_number AS goodNumber, good_name AS goodName, good_type AS goodType, good_price AS goodPrice, good_stock AS goodStock
+    </sql>
+
+</mapper>

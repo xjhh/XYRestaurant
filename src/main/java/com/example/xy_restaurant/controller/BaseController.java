@@ -2,6 +2,7 @@ package com.example.xy_restaurant.controller;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.example.xy_restaurant.entity.Manager;
+import com.example.xy_restaurant.service.IGoodsTypeService;
 import com.example.xy_restaurant.service.IManagerService;
 import com.example.xy_restaurant.service.IPowerService;
 import com.example.xy_restaurant.service.ISysMenuService;
@@ -25,19 +26,25 @@ public abstract class BaseController  {
     public IPowerService powerService;
     @Autowired
     public ISysMenuService sysMenuService;
+    @Autowired
+    IGoodsTypeService goodsTypeService;
 
+    @RequestMapping("/jsp")
     public abstract String enterJsp();
 
     @RequestMapping("/add")
     public abstract String enterAddJsp(HttpServletRequest request);
 
+    @RequestMapping("/add/{id}")
+    public abstract String enterAddJsp(@PathVariable("id") int id, HttpServletRequest request);
+
     @RequestMapping("/edit/{id}")
     public abstract String enterEditJsp(@PathVariable("id") int id, HttpServletRequest request);
 
 
-    @ResponseBody
-    @GetMapping("/list")
-    public abstract List queryList();
+    public  List queryList(){
+        return null;
+    }
 
     public  String insert(){
         return null;

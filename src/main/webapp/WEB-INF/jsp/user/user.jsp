@@ -54,6 +54,7 @@
                         <div class="columns pull-right col-md-2 nopadding">
                             <input id="searchName" type="text" class="form-control"
                                    placeholder="姓名">
+                            <input id="power" type="hidden" value="-1"/>
                         </div>
                     </div>
                     <table id="exampleTable" data-mobile-responsive="true">
@@ -62,31 +63,7 @@
             </div>
         </div>
     </div>
-    <!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
-    <div>
-        <script type="text/javascript">
-            var s_edit_h = 'hidden';
-            var s_remove_h = 'hidden';
-            var s_resetPwd_h = 'hidden';
-        </script>
-    </div>
-    <div shiro:hasPermission="sys:user:edit">
-        <script type="text/javascript">
-            s_edit_h = '';
-        </script>
-    </div>
-    <div shiro:hasPermission="sys:user:remove">
-        <script type="text/javascript">
-            var s_remove_h = '';
-        </script>
-    </div>
-    <div shiro:hasPermission="sys:user:resetPwd">
-        <script type="text/javascript">
-            var s_resetPwd_h = '';
-        </script>
-    </div>
 </div>
-
 <script src="../../js/jquery-1.11.0.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -101,10 +78,10 @@
 <script src="../../js/plugins/chosen/chosen.jquery.js"></script>
 <script src="../../js/plugins/layer/layer.js"></script>
 <script src="../../js/content.js"></script>
-<script type="text/javascript" src="../../js/plugins/distpicker/distpicker.data.min.js"></script>
-<script type="text/javascript" src="../../js/plugins/distpicker/distpicker.min.js"></script>
-<%--<script type="text/javascript" src="../../js/sys/user/gg-bootdo.js"></script>--%>
-<!--校验插件-->
+<!--summernote-->
+<script src="../../js/plugins/summernote/summernote.js"></script>
+<script src="../../js/plugins/summernote/summernote-zh-CN.min.js"></script>
+<script src="../../js/ajax-util.js"></script>
 <script src="../../js/plugins/validate/jquery.validate.min.js"></script>
 <script src="../../js/plugins/validate/jquery.validate.extend.js"></script>
 <script src="../../js/plugins/validate/messages_zh.min.js"></script>

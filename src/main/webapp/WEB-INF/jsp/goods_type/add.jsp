@@ -1,8 +1,15 @@
+ <%--
+  Created by IntelliJ IDEA.
+  User: 98019
+  Date: 2018/4/10
+  Time: 0:04
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>菜单修改</title>
+    <title>添加商品类别</title>
+
     <link rel="shortcut icon" href="favicon.ico">
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome.css" rel="stylesheet">
@@ -23,34 +30,9 @@
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">用户编号：</label>
+                            <label class="col-sm-3 control-label">商品类型名称：</label>
                             <div class="col-sm-8">
-                                <input id="managerId" name="managerId" class="form-control" type="text"
-                                       value="${manager.managerId}" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">用户名：</label>
-                            <div class="col-sm-8">
-                                <input id="managerUsername" name="managerUsername" value="${manager.managerUsername}"
-                                       class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">密码：</label>
-                            <div class="col-sm-8">
-                                <input id="managerPassword" type="managerPassword" name="managerPassword"
-                                       value="${manager.managerPassword}" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">权限：</label>
-                            <div class="col-sm-8">
-                                <c:forEach var="p" items="${powers}">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="managerPower" value="${p.powerId}"/> ${p.powerDepict}
-                                    </label>
-                                </c:forEach>
+                                <input id="typeName" name="typeName" class="form-control" value="${goodsType.typeName}" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,6 +46,7 @@
         </div>
     </div>
 </div>
+
 <script src="../../../js/jquery-1.11.0.min.js"></script>
 <script src="../../../js/bootstrap.min.js"></script>
 <script src="../../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -82,12 +65,6 @@
 <script src="../../../js/plugins/summernote/summernote.js"></script>
 <script src="../../../js/plugins/summernote/summernote-zh-CN.min.js"></script>
 <script src="../../../js/ajax-util.js"></script>
-<script src="../../../js/sys/user/edit.js"></script>
-<script>
-    $(function () {
-        $("input[name='managerPower'][value='${manager.managerPower}']").get(0).checked=true;
-        layer.closeAll('loading');
-    });
-</script>
+<script src="../../../js/goodsType/add.js"></script>
 </body>
 </html>

@@ -616,7 +616,7 @@
 
     <i class="fa fa-podcast" aria-hidden="true"></i>
 
-    <i class="fa fa-power-off" aria-hidden="true"></i>
+    <i class="fa fa-managerPower-off" aria-hidden="true"></i>
 
     <i class="fa fa-print" aria-hidden="true"></i>
 

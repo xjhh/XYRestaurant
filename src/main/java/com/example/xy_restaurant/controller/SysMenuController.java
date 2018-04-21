@@ -25,21 +25,39 @@ import java.util.logging.Logger;
  */
 @Controller
 @RequestMapping("/sys/menu")
-public class SysMenuController {
+public class SysMenuController extends BaseController{
     Logger logger = Logger.getLogger("sys_menu");
     @Autowired
     ISysMenuService sysMenuService;
 
-    @RequestMapping("/menu")
-    public String selMenu(){
+
+    @Override
+    public String enterJsp() {
         return "/menu/menu";
     }
 
+    @Override
+    public String enterAddJsp(HttpServletRequest request) {
+        return null;
+    }
+
     /*
-    弹出修改页面
+    添加界面
      */
-    @RequestMapping("/edit/{id}")
-    public String edit(@PathVariable("id") int id, HttpServletRequest request){
+    @Override
+    public String enterAddJsp(@PathVariable("id") int id, HttpServletRequest request){
+        request.setAttribute("pId",id);
+        if(id == 0) {
+            request.setAttribute("pName", "根目录");
+        }else{
+            request.setAttribute("pName", sysMenuService.selectById(id).getMenuName());
+        }
+        SysMenu sysMenu = sysMenuService.selectById(id);
+        return "/menu/add";
+    }
+
+    @Override
+    public String enterEditJsp(@PathVariable("id")int id, HttpServletRequest request) {
         SysMenu sysMenu = sysMenuService.selectById(id);
 
         logger.info(sysMenu.toString());
@@ -52,21 +70,19 @@ public class SysMenuController {
         return "/menu/edit";
     }
 
-    /*
-    添加界面
-     */
-    @RequestMapping("/add/{id}")
-    public String add(@PathVariable("id") int id, HttpServletRequest request){
-        request.setAttribute("pId",id);
-        if(id == 0) {
-            request.setAttribute("pName", "根目录");
-        }else{
-            request.setAttribute("pName", sysMenuService.selectById(id).getMenuName());
-        }
-        SysMenu sysMenu = sysMenuService.selectById(id);
-        return "/menu/add";
-    }
-
+//    @RequestMapping("/edit/{id}")
+//    public String edit(@PathVariable("id") int id, HttpServletRequest request){
+//        SysMenu sysMenu = sysMenuService.selectById(id);
+//
+//        logger.info(sysMenu.toString());
+//        request.setAttribute("menu", sysMenu);
+//        if(sysMenu.getMenuSeries() != 0) {
+//            request.setAttribute("pName", sysMenuService.selectById(sysMenu.getMenuSeries()).getMenuName());
+//        }else{
+//            request.setAttribute("pName", "");
+//        }
+//        return "/menu/edit";
+//    }
 
     /*
     选择图标
@@ -77,21 +93,21 @@ public class SysMenuController {
     }
 
 
-    //获取菜单列表
+    @Override
     @ResponseBody
     @RequestMapping("/list")
-    public List<SysMenu> selectMenu() {
+    public List queryList() {
         List<SysMenu> menuLists = sysMenuService.selectList(null);
         return menuLists;
     }
 
     @ResponseBody
     @RequestMapping("/update")
-    public String updateMenu(@ModelAttribute SysMenu sysMenu, HttpSession session){
-        logger.info("======>修改菜单"+sysMenu.toString());
-        if(!sysMenuService.updateById(sysMenu)){
+    public String update(@ModelAttribute SysMenu sysMenu, HttpSession session) {
+        logger.info("======>修改菜单" + sysMenu.toString());
+        if (!sysMenuService.updateById(sysMenu)) {
             return ResultJson.resultMsg(false, "修改失败");
-        }else{
+        } else {
             reSession(session);
             return ResultJson.resultMsg(true, "");
         }
@@ -99,7 +115,7 @@ public class SysMenuController {
 
     @ResponseBody
     @RequestMapping("/insert")
-    public String insertMenu(@ModelAttribute SysMenu m, HttpSession session){
+    public String insert(@ModelAttribute SysMenu m, HttpSession session){
         logger.info("======>添加菜单"+m.toString());
         if(!sysMenuService.insert(m)){
             return ResultJson.resultMsg(false, "添加失败");
@@ -108,9 +124,10 @@ public class SysMenuController {
             return ResultJson.resultMsg(true, "");
         }
     }
-    @ResponseBody
-    @RequestMapping("/remove")
-    public String deleteMenu(@RequestParam("id") int id,HttpSession session){
+
+
+    @Override
+    public String delete(int id, HttpSession session) {
         logger.info("======>删除菜单"+id);
         if(!sysMenuService.deleteById(id)){
             return ResultJson.resultMsg(false, "删除失败");
@@ -119,6 +136,7 @@ public class SysMenuController {
             return ResultJson.resultMsg(true, "");
         }
     }
+
 
     public void reSession(HttpSession session){
 
@@ -139,6 +157,7 @@ public class SysMenuController {
         }
         session.setAttribute("menu", menus);
     }
+
 
 }
 

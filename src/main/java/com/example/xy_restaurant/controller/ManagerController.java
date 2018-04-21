@@ -31,7 +31,6 @@ import java.util.List;
 public class ManagerController extends BaseController {
 
     @Override
-    @RequestMapping("/user")
     public String enterJsp() {
         return "user/user";
     }
@@ -41,6 +40,11 @@ public class ManagerController extends BaseController {
         System.out.println(powerService.selectList(null).size());
         request.setAttribute("powers", powerService.selectList(null));
         return "user/add";
+    }
+
+    @Override
+    public String enterAddJsp(int id, HttpServletRequest request) {
+        return null;
     }
 
     @Override
@@ -128,66 +132,6 @@ public class ManagerController extends BaseController {
             return ResultJson.resultMsg(true, "");
         }
     }
-
-
-//    @RequestMapping("/edit/{id}")
-//    public String edit(@PathVariable("id") int id, HttpServletRequest request){
-//        Manager manager = managerService.selectById(id);
-//
-//        logger.info(power.toString());
-//        request.setAttribute("power", power);
-//        return "/power/edit";
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping("/insert")
-//    public String insertMenu(@ModelAttribute Power m){
-//        logger.info("======>添加用户权限"+m.toString());
-//        if(!powerService.insert(m)){
-//            return ResultJson.resultMsg(false, "添加失败");
-//        }else{
-//            return ResultJson.resultMsg(true, "");
-//        }
-//    }
-//    @ResponseBody
-//    @RequestMapping("/update")
-//    public String updateMenu(@ModelAttribute Power power, HttpSession session){
-//        logger.info("======>修改用户权限"+power.toString());
-//        if(!powerService.updateById(power)){
-//            return ResultJson.resultMsg(false, "修改失败");
-//        }else{
-//            return ResultJson.resultMsg(true, "");
-//        }
-//    }
-//
-//    @ResponseBody
-//    @RequestMapping("/remove")
-//    public String deleteMenu(@RequestParam("id") int id,HttpSession session){
-//        logger.info("======>删除权限"+id);
-//        if(!powerService.deleteById(id)){
-//            return ResultJson.resultMsg(false, "删除失败");
-//        }else{
-//            return ResultJson.resultMsg(true, "");
-//        }
-//    }
-//
-//    @ResponseBody
-//    @PostMapping("/batchRemove")
-//    public String deleteBatchIds(@RequestParam int[] ids){
-//
-//        String str = "    [ p;cx';.c zx; .; "+ids[0];
-//        List<Integer> idList = new ArrayList<>();
-//        for (int id : ids) {
-//            idList.add(id);
-//            str += "  "+id;
-//        }
-//        logger.info("======>批量删除权限"+str);
-//        if(!powerService.deleteBatchIds(idList)){
-//            return ResultJson.resultMsg(false, "删除失败");
-//        }else{
-//            return ResultJson.resultMsg(true, "");
-//        }
-//    }
 
 }
 

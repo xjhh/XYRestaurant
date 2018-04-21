@@ -1,11 +1,12 @@
 var prefix = "/sys/user"
+
+var power = -1;
 $(function () {
-    var deptId = '';
     getTreeData();
-    load(deptId);
+    load();
 });
 
-function load(deptId) {
+function load() {
     $('#exampleTable')
         .bootstrapTable(
             {
@@ -23,14 +24,14 @@ function load(deptId) {
                 singleSelect: false, // 设置为true将禁止多选
                 pageSize: 10, // 如果设置了分页，每页数据条数
                 pageNumber: 1, // 如果设置了分布，首页页码
-                managerPower: 0,
                 showColumns: false, // 是否显示内容下拉框（选择显示的列）
                 queryParams: function (params) {
                     return {
                         // 说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         limit: params.limit,
                         offset: params.offset,
-                        name: $('#searchName').val()
+                        name: $('#searchName').val(),
+                        managerPower:$('#power').val()
                     };
                 },
                 columns: [
@@ -51,16 +52,16 @@ function load(deptId) {
                     },
                     {
                         title: '操作',
-                        field: 'id',
+                        field: 'managerId',
                         align: 'center',
                         formatter: function (value, row, index) {
-                            var e = '<a  class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
+                            var e = '<a  class="btn btn-primary btn-sm" href="#" mce_href="#" title="编辑" onclick="edit(\''
                                 + row.managerId
                                 + '\')"><i class="fa fa-edit "></i></a> ';
-                            var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
+                            var d = '<a class="btn btn-warning btn-sm" href="#" title="删除"  mce_href="#" onclick="remove(\''
                                 + row.managerId
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            var f = '<a class="btn btn-success btn-sm ' + s_resetPwd_h + '" href="#" title="重置密码"  mce_href="#" onclick="resetPwd(\''
+                            var f = '<a class="btn btn-success btn-sm" href="#" title="重置密码"  mce_href="#" onclick="resetPwd(\''
                                 + row.managerId
                                 + '\')"><i class="fa fa-key"></i></a> ';
                             return e + d + f;
@@ -100,16 +101,10 @@ function remove(id) {
     layer.confirm('确定要删除选中的记录？', {
         btn: ['确定', '取消']
     }, function () {
-        var ids = new Array();
-        // 遍历所有选择的行数据，取每条数据对应的ID
-        $.each(rows, function (i, row) {
-            ids[i] = row['managerId'];
-
-        });
         $.ajax({
             type: 'POST',
             data: {
-                "ids": ids
+                'id': id
             },
             traditional: true,
             url: prefix + '/batchRemove',
@@ -151,7 +146,7 @@ function batchRemove() {
         var ids = new Array();
         // 遍历所有选择的行数据，取每条数据对应的ID
         $.each(rows, function (i, row) {
-            ids[i] = row['powerId'];
+            ids[i] = row['managerId'];
 
         });
         $.ajax({
@@ -197,21 +192,25 @@ function loadTree(tree) {
 }
 
 $('#jstree').on("changed.jstree", function (e, data) {
-    alert(data.selected);
+    // load(data.selected);
+        $('#exampleTable').bootstrapTable('refresh',data.selected );
     if (data.selected == -1) {
+        power = "";
         var opt = {
             query: {
-                managerPower: '',
+                powmanagerPowerer: -1,
             }
         }
-        $('#exampleTable').bootstrapTable('refresh', opt);
+        $("#power").val(-1);
+        $('#exampleTable').bootstrapTable('refresh');
     } else {
         var opt = {
             query: {
-                managerPower: data.selected,
+                managerPower: data.selected[1],
             }
         }
-        $('#exampleTable').bootstrapTable('refresh', opt);
+        $("#power").val(data.selected);
+        $('#exampleTable').bootstrapTable('refresh');
     }
 
 });

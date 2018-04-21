@@ -31,16 +31,35 @@ import java.util.logging.Logger;
  */
 @Controller
 @RequestMapping("/sys/power")
-public class PowerController {
+public class PowerController extends BaseController{
 
     Logger logger = Logger.getLogger("sys_menu");
     @Autowired
     IPowerService powerService;
 
-    @RequestMapping("/power")
-    public String powerJsp(){
+    @Override
+    public String enterJsp() {
         return "power/power";
     }
+
+    @Override
+    public String enterAddJsp(HttpServletRequest request) {
+        return "/power/add";
+    }
+
+    @Override
+    public String enterAddJsp(int id, HttpServletRequest request) {
+        return null;
+    }
+
+    @Override
+    public String enterEditJsp(@PathVariable("id") int id, HttpServletRequest request) {
+        Power power = powerService.selectById(id);
+        logger.info(power.toString());
+        request.setAttribute("power", power);
+        return "/power/edit";
+    }
+
 
     @ResponseBody
     @GetMapping("/list")
@@ -49,23 +68,10 @@ public class PowerController {
         System.out.println("请求");
         return page;
     }
-    @RequestMapping("/add")
-    public String add(){
-        return "/power/add";
-    }
-
-    @RequestMapping("/edit/{id}")
-    public String edit(@PathVariable("id") int id, HttpServletRequest request){
-        Power power = powerService.selectById(id);
-
-        logger.info(power.toString());
-        request.setAttribute("power", power);
-        return "/power/edit";
-    }
 
     @ResponseBody
     @RequestMapping("/insert")
-    public String insertMenu(@ModelAttribute Power m){
+    public String insert(@ModelAttribute Power m){
         logger.info("======>添加用户权限"+m.toString());
         if(!powerService.insert(m)){
             return ResultJson.resultMsg(false, "添加失败");
@@ -73,9 +79,10 @@ public class PowerController {
             return ResultJson.resultMsg(true, "");
         }
     }
+
     @ResponseBody
     @RequestMapping("/update")
-    public String updateMenu(@ModelAttribute Power power, HttpSession session){
+    public String update(@ModelAttribute Power power, HttpSession session){
         logger.info("======>修改用户权限"+power.toString());
         if(!powerService.updateById(power)){
             return ResultJson.resultMsg(false, "修改失败");
@@ -84,9 +91,8 @@ public class PowerController {
         }
     }
 
-    @ResponseBody
-    @RequestMapping("/remove")
-    public String deleteMenu(@RequestParam("id") int id,HttpSession session){
+    @Override
+    public String delete(int id, HttpSession session) {
         logger.info("======>删除权限"+id);
         if(!powerService.deleteById(id)){
             return ResultJson.resultMsg(false, "删除失败");
@@ -115,10 +121,7 @@ public class PowerController {
     @GetMapping("/tree")
     @ResponseBody
     public Tree<Power> treeJson(){
-
         System.out.println(" =====>>>>>>>" );
-
-//        System.out.println(tree.getId());
         return powerService.getTree();
     }
 

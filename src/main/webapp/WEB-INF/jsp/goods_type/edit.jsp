@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>菜单修改</title>
+    <title>编辑商品类别</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../css/font-awesome.css" rel="stylesheet">
@@ -22,40 +22,22 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
+
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">用户编号：</label>
+                            <label class="col-sm-3 control-label">商品类型编号：</label>
                             <div class="col-sm-8">
-                                <input id="managerId" name="managerId" class="form-control" type="text"
-                                       value="${manager.managerId}" readonly>
+                                <input id="typeId" name="typeId" class="form-control" value="${goodsType.typeId}" type="text" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">用户名：</label>
+                            <label class="col-sm-3 control-label">商品类型名称：</label>
                             <div class="col-sm-8">
-                                <input id="managerUsername" name="managerUsername" value="${manager.managerUsername}"
-                                       class="form-control" type="text">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">密码：</label>
-                            <div class="col-sm-8">
-                                <input id="managerPassword" type="managerPassword" name="managerPassword"
-                                       value="${manager.managerPassword}" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">权限：</label>
-                            <div class="col-sm-8">
-                                <c:forEach var="p" items="${powers}">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="managerPower" value="${p.powerId}"/> ${p.powerDepict}
-                                    </label>
-                                </c:forEach>
+                                <input id="typeName" name="typeName" class="form-control" value="${goodsType.typeName}" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-info">提交</button>
                             </div>
                         </div>
                     </form>
@@ -82,10 +64,9 @@
 <script src="../../../js/plugins/summernote/summernote.js"></script>
 <script src="../../../js/plugins/summernote/summernote-zh-CN.min.js"></script>
 <script src="../../../js/ajax-util.js"></script>
-<script src="../../../js/sys/user/edit.js"></script>
+<script src="../../../js/goodsType/edit.js"></script>
 <script>
     $(function () {
-        $("input[name='managerPower'][value='${manager.managerPower}']").get(0).checked=true;
         layer.closeAll('loading');
     });
 </script>

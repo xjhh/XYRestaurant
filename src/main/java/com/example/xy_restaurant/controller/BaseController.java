@@ -41,7 +41,6 @@ public abstract class BaseController  {
     @RequestMapping("/edit/{id}")
     public abstract String enterEditJsp(@PathVariable("id") int id, HttpServletRequest request);
 
-
     public  List queryList(){
         return null;
     }

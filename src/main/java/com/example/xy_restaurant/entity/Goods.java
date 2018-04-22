@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author xiangjie
- * @since 2018-04-04
+ * @since 2018-04-22
  */
 public class Goods extends Model<Goods> {
 
@@ -45,6 +45,8 @@ public class Goods extends Model<Goods> {
      */
     @TableField("good_stock")
     private Integer goodStock;
+    @TableField("good_img")
+    private String goodImg;
 
 
     public Integer getGoodId() {
@@ -95,6 +97,14 @@ public class Goods extends Model<Goods> {
         this.goodStock = goodStock;
     }
 
+    public String getGoodImg() {
+        return goodImg;
+    }
+
+    public void setGoodImg(String goodImg) {
+        this.goodImg = goodImg;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.goodId;
@@ -109,6 +119,7 @@ public class Goods extends Model<Goods> {
         ", goodType=" + goodType +
         ", goodPrice=" + goodPrice +
         ", goodStock=" + goodStock +
+        ", goodImg=" + goodImg +
         "}";
     }
 }

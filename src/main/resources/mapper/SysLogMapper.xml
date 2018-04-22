@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xy_restaurant.mapper.SysLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.SysLog">
+        <id column="log_id" property="logId" />
+        <result column="log_user_id" property="logUserId" />
+        <result column="log_operate" property="logOperate" />
+        <result column="log_method_function" property="logMethodFunction" />
+        <result column="log_parameter" property="logParameter" />
+        <result column="log_terminal" property="logTerminal" />
+        <result column="log_time" property="logTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        log_id AS logId, log_user_id AS logUserId, log_operate AS logOperate, log_method_function AS logMethodFunction, log_parameter AS logParameter, log_terminal AS logTerminal, log_time AS logTime
+    </sql>
+
+</mapper>

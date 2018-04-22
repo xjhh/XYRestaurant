@@ -12,4 +12,5 @@
     <sql id="Base_Column_List">
         power_id AS powerId, power_depict AS powerDepict
     </sql>
+
 </mapper>

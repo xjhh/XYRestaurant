@@ -15,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        menu_id AS menuId, menu_series AS menuSeries, menu_power AS menuPower, menu_name AS menuName, menu_uri AS menuUri, menu_ico AS menuIco
+        menu_id AS menuId, menu_series AS menuSeries, menu_power AS menuPower, menu_name AS menuName, menu_uri AS menuUri, menu_ico AS menuIco, type
     </sql>
 
     <select id="selectAll" resultMap="BaseResultMap">

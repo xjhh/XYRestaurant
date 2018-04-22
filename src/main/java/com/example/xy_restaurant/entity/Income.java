@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author xiangjie
- * @since 2018-04-04
+ * @since 2018-04-22
  */
 public class Income extends Model<Income> {
 

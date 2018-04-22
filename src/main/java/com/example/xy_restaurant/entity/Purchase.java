@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author xiangjie
- * @since 2018-04-04
+ * @since 2018-04-22
  */
 public class Purchase extends Model<Purchase> {
 
@@ -39,6 +39,10 @@ public class Purchase extends Model<Purchase> {
      */
     @TableField("purchase_number")
     private Integer purchaseNumber;
+    @TableField("purchase_addr")
+    private String purchaseAddr;
+    @TableField("purchase_user")
+    private Integer purchaseUser;
     /**
      * 商品采购的时间
      */
@@ -83,6 +87,22 @@ public class Purchase extends Model<Purchase> {
         this.purchaseNumber = purchaseNumber;
     }
 
+    public String getPurchaseAddr() {
+        return purchaseAddr;
+    }
+
+    public void setPurchaseAddr(String purchaseAddr) {
+        this.purchaseAddr = purchaseAddr;
+    }
+
+    public Integer getPurchaseUser() {
+        return purchaseUser;
+    }
+
+    public void setPurchaseUser(Integer purchaseUser) {
+        this.purchaseUser = purchaseUser;
+    }
+
     public Date getPurchaseTime() {
         return purchaseTime;
     }
@@ -111,6 +131,8 @@ public class Purchase extends Model<Purchase> {
         ", purchaseName=" + purchaseName +
         ", purchasePrice=" + purchasePrice +
         ", purchaseNumber=" + purchaseNumber +
+        ", purchaseAddr=" + purchaseAddr +
+        ", purchaseUser=" + purchaseUser +
         ", purchaseTime=" + purchaseTime +
         ", purchaseTotal=" + purchaseTotal +
         "}";

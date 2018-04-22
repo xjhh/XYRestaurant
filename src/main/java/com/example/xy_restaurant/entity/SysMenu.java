@@ -12,11 +12,11 @@ import java.util.List;
 
 /**
  * <p>
- *
+ * 
  * </p>
  *
  * @author xiangjie
- * @since 2018-04-04
+ * @since 2018-04-22
  */
 @TableName("sys_menu")
 public class SysMenu extends Model<SysMenu> {
@@ -117,13 +117,13 @@ public class SysMenu extends Model<SysMenu> {
     @Override
     public String toString() {
         return "SysMenu{" +
-                ", menuId=" + menuId +
-                ", menuSeries=" + menuSeries +
-                ", menuPower=" + menuPower +
-                ", menuName=" + menuName +
-                ", menuUri=" + menuUri +
-                ", menuIco=" + menuIco +
-                ", type=" + type +
-                "}";
+        ", menuId=" + menuId +
+        ", menuSeries=" + menuSeries +
+        ", menuPower=" + menuPower +
+        ", menuName=" + menuName +
+        ", menuUri=" + menuUri +
+        ", menuIco=" + menuIco +
+        ", type=" + type +
+        "}";
     }
 }

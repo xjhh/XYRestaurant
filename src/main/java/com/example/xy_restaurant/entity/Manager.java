@@ -39,6 +39,20 @@ public class Manager extends Model<Manager> {
     @TableField("manager_power")
     private Integer managerPower;
 
+    /**
+     * 权限名
+     */
+
+    @TableField(exist = false)
+    private String powerName;
+
+    public String getPowerName() {
+        return powerName;
+    }
+
+    public void setPowerName(String powerName) {
+        this.powerName = powerName;
+    }
 
     public Integer getManagerId() {
         return managerId;

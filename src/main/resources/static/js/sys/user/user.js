@@ -47,7 +47,7 @@ function load() {
                         title: '用户名'
                     },
                     {
-                        field: 'managerPower',
+                        field: 'powerName',
                         title: '用户权限'
                     },
                     {
@@ -195,21 +195,13 @@ $('#jstree').on("changed.jstree", function (e, data) {
     // load(data.selected);
         $('#exampleTable').bootstrapTable('refresh',data.selected );
     if (data.selected == -1) {
-        power = "";
-        var opt = {
-            query: {
-                powmanagerPowerer: -1,
-            }
-        }
         $("#power").val(-1);
         $('#exampleTable').bootstrapTable('refresh');
     } else {
-        var opt = {
-            query: {
-                managerPower: data.selected[1],
-            }
-        }
-        $("#power").val(data.selected);
+        var opt = data.selected;
+        layer.msg("显示"+data.instance.get_selected(true)[0].text+"用户");
+
+        $("#power").val(opt);
         $('#exampleTable').bootstrapTable('refresh');
     }
 

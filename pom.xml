@@ -119,6 +119,8 @@
                 <includes>
                     <include>**/*</include>
 
+                    <include>**/**/*</include>
+
                 </includes>
             </resource>
         </resources>

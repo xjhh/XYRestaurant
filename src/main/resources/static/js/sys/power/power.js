@@ -26,6 +26,13 @@ function load() {
                         checkbox: true
                     },
                     {
+                        title:"img",
+                        formatter: function (value, row, index) {
+                            var e = '<img src="../../../goods_image/1.png"/>';
+                            return e;
+                        }
+                    },
+                    {
                         field: 'powerId', // 列字段名
                         align: 'center',
                         title: '序号' // 列标题

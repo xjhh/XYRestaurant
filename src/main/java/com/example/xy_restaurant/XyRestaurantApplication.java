@@ -19,5 +19,13 @@ public class XyRestaurantApplication extends  SpringBootServletInitializer {
     }
     public static void main(String[] args) {
         SpringApplication.run(XyRestaurantApplication.class, args);
+
+        System.out.println("ヾ(◍°∇°◍)ﾉﾞ    湘乐餐厅管理系统启动成功      ヾ(◍°∇°◍)ﾉﾞ\n" +
+                " ______                    _   ______            \n" +
+                "|_   _ \\                  / |_|_   _ `.          \n" +
+                "  | |_) |   .--.    .--. `| |-' | | `. \\  .--.   \n" +
+                "  |  __'. / .'`\\ \\/ .'`\\ \\| |   | |  | |/ .'`\\ \\ \n" +
+                " _| |__) || \\__. || \\__. || |, _| |_.' /| \\__. | \n" +
+                "|_______/  '.__.'  '.__.' \\__/|______.'  '.__.'  ");
     }
 }

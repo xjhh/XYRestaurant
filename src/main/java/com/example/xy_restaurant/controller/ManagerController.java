@@ -59,11 +59,18 @@ public class ManagerController extends BaseController {
     @GetMapping("/list")
     public List queryList(@ModelAttribute QueryParam queryParam) {
         System.out.println(queryParam.toString());
+        List<Manager> managerList = new ArrayList<>();
+        List<Manager> list = null;
         if (queryParam.getManagerPower() == -1) {
-            return managerService.selectList(null);
+            list = managerService.selectList(null);
         } else {
-          return managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getManagerPower()));
+          list = managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getManagerPower()));
         }
+        for (Manager manager : list) {
+            manager.setPowerName(powerService.selectById(manager.getManagerPower()).getPowerDepict());
+            managerList.add(manager);
+        }
+        return managerList;
     }
 
     @ResponseBody

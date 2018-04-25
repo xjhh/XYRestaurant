@@ -20,6 +20,13 @@
 
     <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <script>
+        $(function () {
+           if(${empty user.managerUsername}){
+               window.location.href = "/xiangyue/login"
+           }
+        });
+    </script>
 
 </head>
 
@@ -35,36 +42,6 @@
                             湘乐餐厅后台管理系统
                         </h3>
                     </div>
-                </li>
-                <li>
-                    <a href="#"> <i class="fa fa-home"></i> <span class="nav-label">主页</span> <span
-                            class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a id="index001" class="J_menuItem" href="ind.html" data-index="0">了解BootDo</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"> <i class="fa fa fa-bar-chart-o"></i>
-                        <span class="nav-label">基础信息</span> <span class="fa arrow "></span>
-                    </a>
-                    <ul class="nav nav-second-level ">
-                        <li>
-                            <a class="J_menuItem " href="# " data-index="1">系统管理</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"> <i class="fa fa fa-bar-chart-o"></i>
-                        <span class="nav-label">基础信息</span> <span class="fa arrow "></span>
-                    </a>
-                    <ul class="nav nav-second-level ">
-                        <li>
-                            <a class="J_menuItem " href="# ">系统管理</a>
-                        </li>
-                    </ul>
                 </li>
                 <c:forEach items="${menu}" var="m">
                     <li>
@@ -113,7 +90,6 @@
         </button>
         <nav class="page-tabs J_menuTabs">
             <div class="page-tabs-content">
-                <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
             </div>
         </nav>
         <button class="roll-nav roll-right J_tabRight">
@@ -140,7 +116,8 @@
     </div>
 
     <div class="row J_mainContent" id="content-main" style="position: absolute; width: 100%;">
-        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id="ind.html"
+        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id="main"
+                href="/sys/menu/jsp"
                 seamless></iframe>
 
     </div>

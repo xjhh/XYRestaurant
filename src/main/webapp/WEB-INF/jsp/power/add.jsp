@@ -65,6 +65,6 @@
 <script src="../../../js/plugins/summernote/summernote.js"></script>
 <script src="../../../js/plugins/summernote/summernote-zh-CN.min.js"></script>
 <script src="../../../js/ajax-util.js"></script>
-<script src="../../../js/sys/managerPower/add.js"></script>
+<script src="../../../js/sys/power/add.js"></script>
 </body>
 </html>

@@ -26,13 +26,13 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">权限ID：</label>
                             <div class="col-sm-8">
-                                <input id="powerId" name="powerId" class="form-control" value="${managerPower.powerId}" type="text" readonly>
+                                <input id="powerId" name="powerId" class="form-control" value="${power.powerId}" type="text" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">权限描述：</label>
                             <div class="col-sm-8">
-                                <input id="powerDepict" name="powerDepict" class="form-control" value="${managerPower.powerDepict}" type="text">
+                                <input id="powerDepict" name="powerDepict" class="form-control" value="${power.powerDepict}" type="text">
                             </div>
                         </div>
                         <div class="form-group">
@@ -64,7 +64,7 @@
 <script src="../../../js/plugins/summernote/summernote.js"></script>
 <script src="../../../js/plugins/summernote/summernote-zh-CN.min.js"></script>
 <script src="../../../js/ajax-util.js"></script>
-<script src="../../../js/sys/managerPower/edit.js"></script>
+<script src="../../../js/sys/power/edit.js"></script>
 <script>
     $(function () {
         layer.closeAll('loading');

@@ -116,7 +116,7 @@ CREATE TABLE `manager` (
   `manager_power` int(11) NOT NULL COMMENT '权限',
   PRIMARY KEY (`manager_id`),
   KEY `fk_manage_power` (`manager_power`),
-  CONSTRAINT `fk_manage_power` FOREIGN KEY (`manager_power`) REFERENCES `managerPower` (`power_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_manage_power` FOREIGN KEY (`manager_power`) REFERENCES `type` (`power_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -146,31 +146,31 @@ CREATE TABLE `member` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `managerPower`
+-- Table structure for `type`
 -- ----------------------------
-DROP TABLE IF EXISTS `managerPower`;
-CREATE TABLE `managerPower` (
+DROP TABLE IF EXISTS `type`;
+CREATE TABLE `type` (
   `power_id` int(11) NOT NULL AUTO_INCREMENT,
   `power_depict` varchar(255) NOT NULL,
   PRIMARY KEY (`power_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of managerPower
+-- Records of type
 -- ----------------------------
-INSERT INTO `managerPower` VALUES ('0', '系统管理员');
-INSERT INTO `managerPower` VALUES ('5', '餐厅管理员');
-INSERT INTO `managerPower` VALUES ('6', 'sd');
-INSERT INTO `managerPower` VALUES ('7', 'sdsds');
-INSERT INTO `managerPower` VALUES ('11', 'dasdasd');
-INSERT INTO `managerPower` VALUES ('12', 'asdasd');
-INSERT INTO `managerPower` VALUES ('13', 'sdasda');
-INSERT INTO `managerPower` VALUES ('14', 'adsasda');
-INSERT INTO `managerPower` VALUES ('15', '33333333333');
-INSERT INTO `managerPower` VALUES ('16', '3444');
-INSERT INTO `managerPower` VALUES ('17', '343434');
-INSERT INTO `managerPower` VALUES ('18', '34322');
-INSERT INTO `managerPower` VALUES ('19', '324');
+INSERT INTO `type` VALUES ('0', '系统管理员');
+INSERT INTO `type` VALUES ('5', '餐厅管理员');
+INSERT INTO `type` VALUES ('6', 'sd');
+INSERT INTO `type` VALUES ('7', 'sdsds');
+INSERT INTO `type` VALUES ('11', 'dasdasd');
+INSERT INTO `type` VALUES ('12', 'asdasd');
+INSERT INTO `type` VALUES ('13', 'sdasda');
+INSERT INTO `type` VALUES ('14', 'adsasda');
+INSERT INTO `type` VALUES ('15', '33333333333');
+INSERT INTO `type` VALUES ('16', '3444');
+INSERT INTO `type` VALUES ('17', '343434');
+INSERT INTO `type` VALUES ('18', '34322');
+INSERT INTO `type` VALUES ('19', '324');
 
 -- ----------------------------
 -- Table structure for `purchase`
@@ -205,7 +205,7 @@ CREATE TABLE `sys_menu` (
   `type` int(11) NOT NULL,
   PRIMARY KEY (`menu_id`),
   KEY `fk_power` (`menu_power`),
-  CONSTRAINT `fk_power` FOREIGN KEY (`menu_power`) REFERENCES `managerPower` (`power_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_power` FOREIGN KEY (`menu_power`) REFERENCES `type` (`power_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -215,5 +215,5 @@ INSERT INTO `sys_menu` VALUES ('1', '0', '0', '餐厅管理', null, null, '0');
 INSERT INTO `sys_menu` VALUES ('2', '0', '0', '商品管理', '', 'fa fa-cutlery', '0');
 INSERT INTO `sys_menu` VALUES ('3', '0', '0', '系统管理', '', 'fa fa-gear', '0');
 INSERT INTO `sys_menu` VALUES ('4', '3', '0', '菜单管理', '/sys/menu/menu', 'fa fa-navicon', '1');
-INSERT INTO `sys_menu` VALUES ('9', '3', '0', '角色管理', '/sys/managerPower/managerPower', '', '1');
+INSERT INTO `sys_menu` VALUES ('9', '3', '0', '角色管理', '/sys/type/type', '', '1');
 INSERT INTO `sys_menu` VALUES ('12', '3', '0', '用户管理', '/sys/user/user', '', '1');

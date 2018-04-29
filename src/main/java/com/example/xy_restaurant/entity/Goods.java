@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author xiangjie
@@ -33,6 +34,10 @@ public class Goods extends Model<Goods> {
      */
     @TableField("good_name")
     private String goodName;
+
+    @TableField("good_depict")
+    private String goodDepict;
+
     @TableField("good_type")
     private Integer goodType;
     /**
@@ -45,9 +50,34 @@ public class Goods extends Model<Goods> {
      */
     @TableField("good_stock")
     private Integer goodStock;
+    /**
+     * 商品图片地址
+     */
     @TableField("good_img")
     private String goodImg;
 
+    /**
+     * 商品类别名称
+     */
+
+    @TableField(exist = false)
+    private String goodTypeName;
+
+    public String getGoodDepict() {
+        return goodDepict;
+    }
+
+    public void setGoodDepict(String goodDepict) {
+        this.goodDepict = goodDepict;
+    }
+
+    public String getGoodTypeName() {
+        return goodTypeName;
+    }
+
+    public void setGoodTypeName(String goodTypeName) {
+        this.goodTypeName = goodTypeName;
+    }
 
     public Integer getGoodId() {
         return goodId;
@@ -113,13 +143,13 @@ public class Goods extends Model<Goods> {
     @Override
     public String toString() {
         return "Goods{" +
-        ", goodId=" + goodId +
-        ", goodNumber=" + goodNumber +
-        ", goodName=" + goodName +
-        ", goodType=" + goodType +
-        ", goodPrice=" + goodPrice +
-        ", goodStock=" + goodStock +
-        ", goodImg=" + goodImg +
-        "}";
+                ", goodId=" + goodId +
+                ", goodNumber=" + goodNumber +
+                ", goodName=" + goodName +
+                ", goodType=" + goodType +
+                ", goodPrice=" + goodPrice +
+                ", goodStock=" + goodStock +
+                ", goodImg=" + goodImg +
+                "}";
     }
 }

@@ -7,6 +7,7 @@
         <id column="good_id" property="goodId" />
         <result column="good_number" property="goodNumber" />
         <result column="good_name" property="goodName" />
+        <result column="good_depict" property="goodDepict" />
         <result column="good_type" property="goodType" />
         <result column="good_price" property="goodPrice" />
         <result column="good_stock" property="goodStock" />
@@ -15,7 +16,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        good_id AS goodId, good_number AS goodNumber, good_name AS goodName, good_type AS goodType, good_price AS goodPrice, good_stock AS goodStock, good_img AS goodImg
+        good_id AS goodId, good_number AS goodNumber, good_name AS goodName, good_depict AS goodDepict,
+        good_type AS goodType, good_price AS goodPrice, good_stock AS goodStock, good_img AS goodImg
     </sql>
 
 </mapper>

@@ -4,16 +4,16 @@ public class QueryParam {
     private int limit;
     private int offset;
     private String name;
-    private int managerPower;
+    private int type;
 
     public QueryParam() {
     }
 
-    public QueryParam(int limit, int offset, String name, int power) {
+    public QueryParam(int limit, int offset, String name, int type) {
         this.limit = limit;
         this.offset = offset;
         this.name = name;
-        this.managerPower = power;
+        this.type = type;
     }
 
     public QueryParam(int limit, int offset) {
@@ -45,12 +45,12 @@ public class QueryParam {
         this.name = name;
     }
 
-    public int getManagerPower() {
-        return managerPower;
+    public int getType() {
+        return type;
     }
 
-    public void setManagerPower(int managerPower) {
-        this.managerPower = managerPower;
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class QueryParam {
                 "limit=" + limit +
                 ", offset=" + offset +
                 ", name='" + name + '\'' +
-                ", managerPower=" + managerPower +
+                ", type=" + type +
                 '}';
     }
 }

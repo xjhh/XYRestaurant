@@ -61,10 +61,10 @@ public class ManagerController extends BaseController {
         System.out.println(queryParam.toString());
         List<Manager> managerList = new ArrayList<>();
         List<Manager> list = null;
-        if (queryParam.getManagerPower() == -1) {
+        if (queryParam.getType() == -1) {
             list = managerService.selectList(null);
         } else {
-          list = managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getManagerPower()));
+          list = managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getType()));
         }
         for (Manager manager : list) {
             manager.setPowerName(powerService.selectById(manager.getManagerPower()).getPowerDepict());

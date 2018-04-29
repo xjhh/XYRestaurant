@@ -2,10 +2,7 @@ package com.example.xy_restaurant.controller;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.example.xy_restaurant.entity.Manager;
-import com.example.xy_restaurant.service.IGoodsTypeService;
-import com.example.xy_restaurant.service.IManagerService;
-import com.example.xy_restaurant.service.IPowerService;
-import com.example.xy_restaurant.service.ISysMenuService;
+import com.example.xy_restaurant.service.*;
 import com.example.xy_restaurant.util.ResultJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +25,8 @@ public abstract class BaseController  {
     public ISysMenuService sysMenuService;
     @Autowired
     IGoodsTypeService goodsTypeService;
+    @Autowired
+    IGoodsService goodsService;
 
     @RequestMapping("/jsp")
     public abstract String enterJsp();

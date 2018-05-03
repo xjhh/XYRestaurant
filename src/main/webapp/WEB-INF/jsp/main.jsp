@@ -22,9 +22,9 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
     <script>
         $(function () {
-           if(${empty user.managerUsername}){
-               window.location.href = "/xiangyue/login"
-           }
+           <%--if(${empty user.managerUsername}){--%>
+               <%--window.location.href = "/xiangyue/login"--%>
+           <%--}--%>
         });
     </script>
 

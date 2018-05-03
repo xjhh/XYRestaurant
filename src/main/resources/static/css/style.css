@@ -4692,7 +4692,7 @@ ul.notes li div {
 }
 
 .file .icon, .file .image {
-    height: 100px;
+    height: 200px;
     overflow: hidden;
 }
 
@@ -4720,6 +4720,7 @@ ul.notes li div {
     padding: 10px;
     background-color: #f8f8f8;
     border-top: 1px solid #e7eaec;
+    height: 40px;
 }
 
 .file-name small {

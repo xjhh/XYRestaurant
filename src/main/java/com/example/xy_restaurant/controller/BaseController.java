@@ -27,6 +27,10 @@ public abstract class BaseController  {
     IGoodsTypeService goodsTypeService;
     @Autowired
     IGoodsService goodsService;
+    @Autowired
+    IDeskService deskService;
+    @Autowired
+    IMemberService memberService;
 
     @RequestMapping("/jsp")
     public abstract String enterJsp();

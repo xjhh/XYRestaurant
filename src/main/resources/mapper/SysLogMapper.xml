@@ -10,6 +10,8 @@
         <result column="log_method_function" property="logMethodFunction" />
         <result column="log_parameter" property="logParameter" />
         <result column="log_terminal" property="logTerminal" />
+        <result column="log_status" property="logStatus" />
+        <result column="logErrorMsg" property="logErrorMsg" />
         <result column="log_time" property="logTime" />
     </resultMap>
 

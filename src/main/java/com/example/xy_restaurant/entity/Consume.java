@@ -38,18 +38,58 @@ public class Consume extends Model<Consume> {
      * 商品id
      */
     @TableField("good_id")
-    private Integer goodId;
+    private String goodId;
     /**
      * 会员消费时间
      */
     @TableField("consume_time")
-    private Date consumeTime;
+    private String consumeTime;
+    /**
+     * 消费状态
+     */
+    @TableField("consume_status")
+    private Integer consumeStatus;
     /**
      * 会员消费总价
      */
     @TableField("consume_total")
     private Double consumeTotal;
 
+    /**
+     *会员名称
+     */
+    @TableField(exist = false)
+    private String memberName;
+
+    /**
+     * 桌台编号
+     */
+    @TableField(exist = false)
+    private String deskNumber;
+
+    public String getDeskNumber() {
+        return deskNumber;
+    }
+
+    public void setDeskNumber(String deskNumber) {
+        this.deskNumber = deskNumber;
+    }
+
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public Integer getConsumeStatus() {
+        return consumeStatus;
+    }
+
+    public void setConsumeStatus(Integer consumeStatus) {
+        this.consumeStatus = consumeStatus;
+    }
 
     public Integer getConsumeId() {
         return consumeId;
@@ -75,19 +115,19 @@ public class Consume extends Model<Consume> {
         this.deskId = deskId;
     }
 
-    public Integer getGoodId() {
+    public String getGoodId() {
         return goodId;
     }
 
-    public void setGoodId(Integer goodId) {
+    public void setGoodId(String goodId) {
         this.goodId = goodId;
     }
 
-    public Date getConsumeTime() {
+    public String getConsumeTime() {
         return consumeTime;
     }
 
-    public void setConsumeTime(Date consumeTime) {
+    public void setConsumeTime(String consumeTime) {
         this.consumeTime = consumeTime;
     }
 
@@ -111,7 +151,8 @@ public class Consume extends Model<Consume> {
         ", memberCard=" + memberCard +
         ", deskId=" + deskId +
         ", goodId=" + goodId +
-        ", consumeTime=" + consumeTime +
+                ", consumeTime=" + consumeTime +
+                ", consumeTime=" + consumeTime +
         ", consumeTotal=" + consumeTotal +
         "}";
     }

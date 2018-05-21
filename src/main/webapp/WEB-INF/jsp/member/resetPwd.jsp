@@ -93,13 +93,13 @@
             $("#signupForm").validate({
                 rules : {
 
-                    password : {
+                    memberPassword : {
                         required : true,
                         minlength : 6
                     }
                 },
                 messages : {
-                    password : {
+                    memberPassword : {
                         required : icon + "请输入您的密码",
                         minlength : icon + "密码必须6个字符以上"
                     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author xiangjie
@@ -51,6 +51,16 @@ public class SysMenu extends Model<SysMenu> {
 
     public void setMenuChilds(List<SysMenu> menuChilds) {
         this.menuChilds = menuChilds;
+    }
+
+    public void setMenuChilds(int power) {
+        List<SysMenu> menuChildList = new ArrayList<>();
+        for (SysMenu menuChild : menuChilds) {
+            if (menuChild.getMenuPower() == power) {
+                menuChildList.add(menuChild);
+            }
+        }
+        this.menuChilds = menuChildList;
     }
 
     public Integer getMenuId() {
@@ -117,13 +127,13 @@ public class SysMenu extends Model<SysMenu> {
     @Override
     public String toString() {
         return "SysMenu{" +
-        ", menuId=" + menuId +
-        ", menuSeries=" + menuSeries +
-        ", menuPower=" + menuPower +
-        ", menuName=" + menuName +
-        ", menuUri=" + menuUri +
-        ", menuIco=" + menuIco +
-        ", type=" + type +
-        "}";
+                ", menuId=" + menuId +
+                ", menuSeries=" + menuSeries +
+                ", menuPower=" + menuPower +
+                ", menuName=" + menuName +
+                ", menuUri=" + menuUri +
+                ", menuIco=" + menuIco +
+                ", type=" + type +
+                "}";
     }
 }

@@ -19,18 +19,11 @@ function load() {
                 striped: true, // 设置为true会有隔行变色效果
                 // 服务器返回的数据类型
                 pagination: true, // 设置为true会在底部显示分页条
-                pageSize: 3, // 如果设置了分页，每页数据条数
+                pageSize: 7, // 如果设置了分页，每页数据条数
                 pageNumber: 1, // 如果设置了分布，首页页码
                 columns: [
                     {
                         checkbox: true
-                    },
-                    {
-                        title:"img",
-                        formatter: function (value, row, index) {
-                            var e = '<img src="/goods_image/1.png"/>';
-                            return e;
-                        }
                     },
                     {
                         field: 'powerId', // 列字段名

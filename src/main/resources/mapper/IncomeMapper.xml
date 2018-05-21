@@ -5,13 +5,11 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.xy_restaurant.entity.Income">
         <id column="income_id" property="incomeId" />
+        <result column="income_net" property="incomeNet" />
+        <result column="income_expend" property="incomeExpend" />
         <result column="income_total" property="incomeTotal" />
         <result column="income_data" property="incomeData" />
     </resultMap>
 
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        income_id AS incomeId, income_total AS incomeTotal, income_data AS incomeData
-    </sql>
 
 </mapper>

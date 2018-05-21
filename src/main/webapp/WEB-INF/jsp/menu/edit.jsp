@@ -60,9 +60,13 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">权限标识：</label>
+
                             <div class="col-sm-8">
-                                <input id="menuPower" name="menuPower" class="form-control" type="text"
-                                       value="${menu.menuPower}">
+                                <c:forEach var="p" items="${powers}">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="menuPower" value="${p.powerId}"/> ${p.powerDepict}
+                                    </label>
+                                </c:forEach>
                             </div>
                         </div>
                         <div class="form-group">
@@ -106,6 +110,7 @@
 <script>
     $(function () {
         $("input[name='type']").get(${menu.type}).checked=true;
+    $("input[name='menuPower']").get(0).checked=true;
         layer.closeAll('loading');
     });
 </script>

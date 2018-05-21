@@ -36,14 +36,38 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-            typeName : {
-				required : true
-			}
+            goodName : {
+                required : true
+            },
+            goodDepict : {
+                required : true
+            },
+			goodPrice : {
+                required : true
+            },
+            goodStock : {
+                required : true
+            },
+            goodImg : {
+                required : true
+            }
 		},
 		messages : {
-            typeName : {
-				required : icon + "商品类别描述不能为空"
-			}
+            goodName : {
+				required : icon + "商品名称不能为空"
+			},
+            goodDepict : {
+                required : icon + "商品描述不能为空"
+            },
+            goodPrice : {
+                required : icon + "商品单价不能为空"
+            },
+            goodStock : {
+                required : icon + "商品库存不能为空"
+            },
+            goodImg : {
+                required : icon + "请选择商品图片地址"
+            }
 		}
 	})
 }

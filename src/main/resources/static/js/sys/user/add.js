@@ -65,7 +65,7 @@ function validateRule() {
 					}
 				}
 			},
-			password : {
+            managerPassword : {
 				required : true,
 				minlength : 6
 			},
@@ -94,7 +94,7 @@ function validateRule() {
 				minlength : icon + "用户名必须两个字符以上",
 				remote : icon + "用户名已经存在"
 			},
-			password : {
+            managerPassword : {
 				required : icon + "请输入您的密码",
 				minlength : icon + "密码必须6个字符以上"
 			},

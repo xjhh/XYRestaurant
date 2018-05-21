@@ -62,6 +62,34 @@ public class Goods extends Model<Goods> {
 
     @TableField(exist = false)
     private String goodTypeName;
+    /**
+     * 商品购买数量
+     */
+
+    @TableField(exist = false)
+    private int goodBuySize;
+    /**
+     * 商品总价
+     */
+
+    @TableField(exist = false)
+    private float goodBuyTotal;
+
+    public float getGoodBuyTotal() {
+        return goodBuyTotal;
+    }
+
+    public void setGoodBuyTotal(float goodBuyTotal) {
+        this.goodBuyTotal = goodBuyTotal;
+    }
+
+    public int getGoodBuySize() {
+        return goodBuySize;
+    }
+
+    public void setGoodBuySize(int goodBuySize) {
+        this.goodBuySize = goodBuySize;
+    }
 
     public String getGoodDepict() {
         return goodDepict;

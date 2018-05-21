@@ -21,21 +21,72 @@ public class SysLog extends Model<SysLog> {
 
     private static final long serialVersionUID = 1L;
 
+    //日志id
     @TableId(value = "log_id", type = IdType.AUTO)
     private Integer logId;
+
+    //操作用户id
     @TableField("log_user_id")
     private Integer logUserId;
+
+    //操作描述
     @TableField("log_operate")
     private String logOperate;
+
+    //方法名
     @TableField("log_method_function")
     private String logMethodFunction;
+
+    //参数
     @TableField("log_parameter")
     private String logParameter;
+
+    //终端
     @TableField("log_terminal")
     private String logTerminal;
-    @TableField("log_time")
-    private Date logTime;
 
+    //操作状态  0成功   1失败
+    @TableField("log_status")
+    private Integer logStatus;
+
+    //错误日志
+    @TableField("log_error_msg")
+    private String logErrorMsg;
+
+    @TableField("log_time")
+    private String logTime;
+
+    @TableField(exist = false)
+    private String logStatuName;
+
+    public Integer getLogStatus() {
+        return logStatus;
+    }
+
+    public void setLogStatus(Integer logStatus) {
+        this.logStatus = logStatus;
+        if(logStatus == 0){
+            logStatuName = "成功";
+        }else{
+            logStatuName = "失败";
+        }
+    }
+
+    public String getLogErrorMsg() {
+        return logErrorMsg;
+    }
+
+    public void setLogErrorMsg(String logErrorMsg) {
+        this.logErrorMsg = logErrorMsg;
+    }
+
+    public String getLogStatuName() {
+        return logStatuName;
+    }
+
+    public void setLogStatuName(String logStatuName) {
+        this.logStatuName = logStatuName;
+    }
 
     public Integer getLogId() {
         return logId;
@@ -85,11 +136,11 @@ public class SysLog extends Model<SysLog> {
         this.logTerminal = logTerminal;
     }
 
-    public Date getLogTime() {
+    public String getLogTime() {
         return logTime;
     }
 
-    public void setLogTime(Date logTime) {
+    public void setLogTime(String logTime) {
         this.logTime = logTime;
     }
 

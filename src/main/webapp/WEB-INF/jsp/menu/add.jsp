@@ -43,7 +43,7 @@
                                     <input type="radio" name="type" value="0"/> 目录
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="type" value="1"/> 菜单
+                                    <input type="radio" name="type" value="1" checked/> 菜单
                                 </label>
                                 <label class="radio-inline">
                                     <input type="radio" name="type" value="2"/> 按钮
@@ -65,7 +65,14 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">权限标识：</label>
                             <div class="col-sm-8">
-                                <input id="menuPower" name="menuPower" class="form-control" type="text">
+                                <input id="menuPower" name="menuPower" class="form-control" type="text" value="0">
+                            </div>
+                            <div class="col-sm-8">
+                                <c:forEach var="p" items="${powers}">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="menuPower" value="${p.powerId}"/> ${p.powerDepict}
+                                    </label>
+                                </c:forEach>
                             </div>
                         </div>
                         <div class="form-group">
@@ -111,6 +118,7 @@
 <script>
     $(function () {
         // layer.closeAll('loading');
+    $("input[name='menuPower']").get(0).checked=true;
     });
 </script>
 </body>

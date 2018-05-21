@@ -110,9 +110,9 @@
                     <div id="incomeNum"></div>
                 </div>
             </div>
-            <div>
-                <ul id="page"></ul>
-            </div>
+            <%--<div>--%>
+                <%--<ul id="page"></ul>--%>
+            <%--</div>--%>
         </div>
     </div>
 </div>
@@ -161,36 +161,36 @@
                     app.page();
                 });
             },
-            page: function () {
-                var options = {
-                    currentPage: app.offset / 12 + 1, //当前页
-                    totalPages: app.total / (12 + 1) + 1, //总页数
-                    numberofPages: 4, //显示的页数
-                    bootstrapMajorVersion: 3,
-                    alignment: 'center',
-                    size: 'large',
-                    shouldShowPage: true,
-                    itemTexts: function (type, page, current) { //修改显示文字
-                        switch (type) {
-                            case "first":
-                                return "首页";
-                            case "prev":
-                                return "上一页";
-                            case "next":
-                                return "下一页";
-                            case "last":
-                                return "尾页";
-                            case "page":
-                                return page;
-                        }
-                    },
-                    onPageClicked: function (event, originalEvent, type, page) {
-                        app.offset = (page - 1) * 12;
-                        app.getData();
-                    }
-                };
-                $('#page').bootstrapPaginator(options);
-            },
+            // page: function () {
+            //     var options = {
+            //         currentPage: app.offset / 12 + 1, //当前页
+            //         totalPages: app.total / (12 + 1) + 1, //总页数
+            //         numberofPages: 4, //显示的页数
+            //         bootstrapMajorVersion: 3,
+            //         alignment: 'center',
+            //         size: 'large',
+            //         shouldShowPage: true,
+            //         itemTexts: function (type, page, current) { //修改显示文字
+            //             switch (type) {
+            //                 case "first":
+            //                     return "首页";
+            //                 case "prev":
+            //                     return "上一页";
+            //                 case "next":
+            //                     return "下一页";
+            //                 case "last":
+            //                     return "尾页";
+            //                 case "page":
+            //                     return page;
+            //             }
+            //         },
+            //         onPageClicked: function (event, originalEvent, type, page) {
+            //             app.offset = (page - 1) * 12;
+            //             app.getData();
+            //         }
+            //     };
+            //     $('#page').bootstrapPaginator(options);
+            // },
             add:function(){
 
                 layer.open({

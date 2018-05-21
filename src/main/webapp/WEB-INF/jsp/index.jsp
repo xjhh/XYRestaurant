@@ -10,12 +10,12 @@
 <html>
 <head>
     <title>湘乐餐厅管理系统</title>
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="../js/plugins/layer/layer.js"></script>
     <link rel="stylesheet" href="../css/index.css"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script type="application/javascript">
         $(function () {
             $(".login").click(function () {

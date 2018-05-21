@@ -20,13 +20,6 @@
 
     <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
-    <script>
-        $(function () {
-           <%--if(${empty user.managerUsername}){--%>
-               <%--window.location.href = "/xiangyue/login"--%>
-           <%--}--%>
-        });
-    </script>
 
 </head>
 
@@ -45,7 +38,7 @@
                 </li>
                 <c:forEach items="${menu}" var="m">
                     <li>
-                        <a href="#">
+                        <a href="${m.menuUri}">
                             <i class="${m.menuIco}"></i>
                             <span class="nav-label">${m.menuName}</span>
                             <span class="fa arrow"></span>
@@ -128,6 +121,13 @@
 <script type="text/javascript" src="../js/index.js"></script>
 <script type="text/javascript " src="../js/main.js"></script>
 <script type="text/javascript" src="../js/contabs.js"></script>
+<script>
+    $(function () {
+        if(${empty user.managerUsername}){
+        window.location.href = "/xiangyue/login"
+        }
+    });
+</script>
 </body>
 
 </html>

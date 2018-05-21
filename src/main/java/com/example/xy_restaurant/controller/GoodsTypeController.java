@@ -33,11 +33,14 @@ public class GoodsTypeController extends BaseController{
 
     @Override
     public String enterJsp() {
+
+        insertLog(BaseController.STAUSE_OK, "进入商品类型管理界面", "", "");
         return "goods_type/goodsType";
     }
 
     @Override
     public String enterAddJsp(HttpServletRequest request) {
+        insertLog(BaseController.STAUSE_OK, "进入添加商品类型界面", "", "");
         return  "goods_type/add";
     }
 
@@ -50,6 +53,7 @@ public class GoodsTypeController extends BaseController{
     public String enterEditJsp(@PathVariable("id") int id, HttpServletRequest request) {
         GoodsType goodsType = goodsTypeService.selectById(id);
         request.setAttribute("goodsType", goodsType);
+        insertLog(BaseController.STAUSE_OK, "进入修改商品类型界面", "", "");
         return "goods_type/edit";
     }
 
@@ -64,8 +68,10 @@ public class GoodsTypeController extends BaseController{
     public String insert(@ModelAttribute GoodsType goodsType){
         logger.info("======>添加商品类别"+goodsType.toString());
         if(!goodsTypeService.insert(goodsType)){
+            insertLog(BaseController.STAUSE_NO, "添加商品类型", goodsType.toString(), "添加失败");
             return ResultJson.resultMsg(false, "添加失败");
         }else{
+            insertLog(BaseController.STAUSE_OK, "添加商品类型", goodsType.toString(), "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -75,8 +81,10 @@ public class GoodsTypeController extends BaseController{
     public String update(@ModelAttribute GoodsType goodsType, HttpSession session){
         logger.info("======>修改商品类别"+goodsType.toString());
         if(!goodsTypeService.updateById(goodsType)){
+            insertLog(BaseController.STAUSE_NO, "修改商品类型", goodsType.toString(), "修改失败");
             return ResultJson.resultMsg(false, "修改失败");
         }else{
+            insertLog(BaseController.STAUSE_OK, "修改商品类型", goodsType.toString(), "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -85,8 +93,10 @@ public class GoodsTypeController extends BaseController{
     public String delete(int id, HttpSession session) {
         logger.info("======>删除类别"+id);
         if(!goodsTypeService.deleteById(id)){
+            insertLog(BaseController.STAUSE_NO, "删除商品类型", "GoodTypeID: "+id, "删除失败");
             return ResultJson.resultMsg(false, "删除失败");
         }else{
+            insertLog(BaseController.STAUSE_OK, "删除商品类型",  "GoodTypeID: "+id, "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -102,8 +112,10 @@ public class GoodsTypeController extends BaseController{
         }
         logger.info("======>批量删除类别"+str);
         if(!goodsTypeService.deleteBatchIds(idList)){
-            return ResultJson.resultMsg(false, "删除失败");
+            insertLog(BaseController.STAUSE_NO, "批量删除商品类型", "GoodTypeID: "+str, "批量删除失败");
+            return ResultJson.resultMsg(false, "批量删除失败");
         }else{
+            insertLog(BaseController.STAUSE_OK, "批量删除商品类型", "GoodTypeID: "+str, "");
             return ResultJson.resultMsg(true, "");
         }
     }

@@ -74,20 +74,20 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-			name : {
-				required : true
-			},
-			type : {
-				required : true
-			}
-		},
-		messages : {
-			name : {
-				required : icon + "请输入菜单名"
-			},
-			type : {
-				required : icon + "请选择菜单类型"
-			}
-		}
+            menuName: {
+                required : true
+            },
+            menuPower: {
+                required : true
+            }
+        },
+        messages : {
+            menuName: {
+                required : icon + "请输入菜单名"
+            },
+            menuPower: {
+                required : icon + "请输入菜单权限标识"
+            }
+        }
 	})
 }

@@ -47,13 +47,23 @@ public class Purchase extends Model<Purchase> {
      * 商品采购的时间
      */
     @TableField("purchase_time")
-    private Date purchaseTime;
+    private String purchaseTime;
     /**
      * 商品采购的总价
      */
     @TableField("purchase_total")
     private Double purchaseTotal;
 
+    @TableField(exist = false)
+    private String purchaseUserName;
+
+    public String getPurchaseUserName() {
+        return purchaseUserName;
+    }
+
+    public void setPurchaseUserName(String purchaseUserName) {
+        this.purchaseUserName = purchaseUserName;
+    }
 
     public Integer getPurchaseId() {
         return purchaseId;
@@ -103,11 +113,11 @@ public class Purchase extends Model<Purchase> {
         this.purchaseUser = purchaseUser;
     }
 
-    public Date getPurchaseTime() {
+    public String getPurchaseTime() {
         return purchaseTime;
     }
 
-    public void setPurchaseTime(Date purchaseTime) {
+    public void setPurchaseTime(String purchaseTime) {
         this.purchaseTime = purchaseTime;
     }
 

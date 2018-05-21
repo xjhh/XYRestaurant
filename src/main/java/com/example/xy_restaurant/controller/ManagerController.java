@@ -32,6 +32,7 @@ public class ManagerController extends BaseController {
 
     @Override
     public String enterJsp() {
+        insertLog(BaseController.STAUSE_OK, "进入用户管理界面", "", "");
         return "user/user";
     }
 
@@ -39,6 +40,7 @@ public class ManagerController extends BaseController {
     public String enterAddJsp(HttpServletRequest request) {
         System.out.println(powerService.selectList(null).size());
         request.setAttribute("powers", powerService.selectList(null));
+        insertLog(BaseController.STAUSE_OK, "进入添加用户界面", "", "");
         return "user/add";
     }
 
@@ -52,6 +54,7 @@ public class ManagerController extends BaseController {
         Manager manager = managerService.selectById(id);
         request.setAttribute("manager", manager);
         request.setAttribute("powers", powerService.selectList(null));
+        insertLog(BaseController.STAUSE_OK, "进入修改用户界面", "id:" + id, "");
         return "user/edit";
     }
 
@@ -64,7 +67,7 @@ public class ManagerController extends BaseController {
         if (queryParam.getType() == -1) {
             list = managerService.selectList(null);
         } else {
-          list = managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getType()));
+            list = managerService.selectList(new EntityWrapper<Manager>().eq("manager_power", queryParam.getType()));
         }
         for (Manager manager : list) {
             manager.setPowerName(powerService.selectById(manager.getManagerPower()).getPowerDepict());
@@ -77,10 +80,10 @@ public class ManagerController extends BaseController {
     @RequestMapping("/insert")
     public String insert(@ModelAttribute Manager manager) {
         if (!managerService.insert(manager)) {
-            System.out.println("失败");
+            insertLog(BaseController.STAUSE_NO, "添加用户", manager.toString(), "添加失败");
             return ResultJson.resultMsg(false, "添加失败");
         } else {
-            System.out.println("成功 ");
+            insertLog(BaseController.STAUSE_OK, "添加用户", manager.toString(), "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -90,8 +93,10 @@ public class ManagerController extends BaseController {
     public String update(@ModelAttribute Manager manager, HttpSession session) {
         System.out.println(manager.toString());
         if (!managerService.updateById(manager)) {
+            insertLog(BaseController.STAUSE_NO, "修改用户", manager.toString(), "修改失败");
             return ResultJson.resultMsg(false, "修改失败");
         } else {
+            insertLog(BaseController.STAUSE_OK, "修改用户", manager.toString(), "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -99,8 +104,10 @@ public class ManagerController extends BaseController {
     @Override
     public String delete(int id, HttpSession session) {
         if (!managerService.deleteById(id)) {
+            insertLog(BaseController.STAUSE_NO, "删除用户", "id:" + id, "删除失败");
             return ResultJson.resultMsg(false, "删除失败");
         } else {
+            insertLog(BaseController.STAUSE_OK, "删除用户", "id:" + id, "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -116,8 +123,10 @@ public class ManagerController extends BaseController {
         }
         System.out.println("======>批量删除权限" + str);
         if (!managerService.deleteBatchIds(idList)) {
-            return ResultJson.resultMsg(false, "删除失败");
+            insertLog(BaseController.STAUSE_NO, "批量删除用户", "ids: " + str, "批量删除失败");
+            return ResultJson.resultMsg(false, "批量删除失败");
         } else {
+            insertLog(BaseController.STAUSE_OK, "批量删除用户", "ids: " + str, "");
             return ResultJson.resultMsg(true, "");
         }
     }
@@ -126,6 +135,7 @@ public class ManagerController extends BaseController {
     public String enterResetPwd(@PathVariable("id") int id, HttpServletRequest request) {
         Manager manager = managerService.selectById(id);
         request.setAttribute("manager", manager);
+        insertLog(BaseController.STAUSE_OK, "进入用户修改密码界面", "ids: " + id, "");
         return "user/resetPwd";
     }
 
@@ -134,8 +144,10 @@ public class ManagerController extends BaseController {
     public String adminResetPwd(@ModelAttribute Manager manager) {
 
         if (!managerService.updateById(manager)) {
+            insertLog(BaseController.STAUSE_NO, "修改用户密码", manager.toString(), "修改失败");
             return ResultJson.resultMsg(false, "修改失败");
         } else {
+            insertLog(BaseController.STAUSE_OK, "修改用户密码", manager.toString(), "");
             return ResultJson.resultMsg(true, "");
         }
     }

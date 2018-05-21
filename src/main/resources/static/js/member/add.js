@@ -35,14 +35,29 @@ function validateRule() {
 	var icon = "<i class='fa fa-times-circle'></i> ";
 	$("#signupForm").validate({
 		rules : {
-            typeName : {
+
+            memberName : {
+				required : true
+			},
+            memberPassword : {
+				required : true,
+                minlength : 6
+			},
+            memberPhone : {
 				required : true
 			}
 		},
 		messages : {
-            typeName : {
-				required : icon + "商品类别描述不能为空"
-			}
+            memberName : {
+                required :  icon + "请输入会员名称"
+            },
+            memberPassword : {
+                required :  icon + "请设置密码",
+                minlength : icon + "密码必须6个字符以上"
+            },
+            memberPhone : {
+                required :  icon + "请输入联系电话"
+            }
 		}
 	})
 }
